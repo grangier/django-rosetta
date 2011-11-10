@@ -1,6 +1,6 @@
 {% extends "rosetta/base.html" %}
 {% load i18n %}
-{% block breadcumbs %}<a href="{% url rosetta-pick-file %}">{% trans "Home" %}</a> &rsaquo; {% trans "Language selection" %}{% endblock %}
+{% block breadcumbs %}<a href="{% url "rosetta-pick-file" %}">{% trans "Home" %}</a> &rsaquo; {% trans "Language selection" %}{% endblock %}
 {% block pagetitle %}{% trans "Language selection" %}{% endblock %}
 {% block main %}
     {% if has_pos %}
@@ -23,7 +23,7 @@
                 <tbody>
                     {% for app,path,po in pos %}
                     <tr class="{% cycle row1,row2 %}">
-                        <td><a href="{% url rosetta-language-selection lid,forloop.counter0 %}{% if do_django %}?django{% endif %}{% if do_rosetta %}?rosetta{% endif %}">{{ app|title }}</a></td>
+                        <td><a href="{% url "rosetta-language-selection" lid,forloop.counter0 %}{% if do_django %}?django{% endif %}{% if do_rosetta %}?rosetta{% endif %}">{{ app|title }}</a></td>
                         <td class="r">{{po.percent_translated|floatformat:2}}%</td>
                         <td class="r">{{po|length}}</td>
                         <td class="r">{{po.translated_entries|length}}</td>
